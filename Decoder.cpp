@@ -32,6 +32,7 @@ public:
 private:
     unordered_map<string, char> decoded_digits;
 };
+
 int main() {
     int q = 0, l = 0;
     cin >> q >> l;
