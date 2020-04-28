@@ -6,10 +6,10 @@ using namespace std;
 
 class Decoder {
 public:
-    void AddDigit(char c, string code) {
+    void AddDigit(char c, const string& code) {
         decoded_digits[code] = c;
     }
-    string Decode(string decode_str, int l) {
+    string Decode(const string& decode_str, const int& l) {
         if(l == 1) {
             return {decoded_digits[decode_str]};
         }
@@ -21,7 +21,6 @@ public:
             char temp;
             ss >> temp;
             codestr += temp;
-            //cout << codestr << endl;
             if (decoded_digits.find(codestr) != decoded_digits.end()) {
                 result += decoded_digits[codestr];
                 codestr.erase();
