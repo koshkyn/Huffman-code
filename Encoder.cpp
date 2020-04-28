@@ -12,9 +12,11 @@ struct Item {
     int priority;
 
 };
+
 bool operator<(const Item& lhs, const Item& rhs) {
     return tie(lhs.priority, lhs.digits) > tie(rhs.priority, rhs.digits);
 }
+
 class Tree {
 public:
     void Add(const string& dgts) {
@@ -22,14 +24,14 @@ public:
             ++digits[{digit}];
         }
     }
+    
     void CreateTree() {
-
         vector<Item> items;
         for(auto& d : digits) {
             items.push_back({d.first, d.second});
         }
-        
-        priority_queue<Item> sorted_digits(std::less<Item>(), items);
+ 
+        priority_queue<Item> sorted_digits(less<Item>(), items);
         string result;
 
         if(sorted_digits.size() == 1) {
@@ -50,6 +52,7 @@ public:
             sorted_digits.push({first.digits + second.digits, first.priority + second.priority});
         }
     }
+    
     void CodeString(const string& ins) {
         Add(ins);
         CreateTree();
@@ -63,10 +66,12 @@ public:
         }
         cout << result << endl;
     }
+    
 private:
     unordered_map<string, int> digits;
     unordered_map<char, string> coded_digits;
 };
+
 int main() {
     string digits;
     cin >> digits;
